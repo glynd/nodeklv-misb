@@ -1,0 +1,8 @@
+
+This uses an opensource Node KLV generator to encode MISB0601 KLV for testing using GStreamer
+
+- Timestamp
+- CRC
+
+The result is sent via RTP to 'localhost' on port 5004
+One packet generated every 200ms
