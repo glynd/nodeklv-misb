@@ -9,7 +9,7 @@ export TARGETIP=127.0.0.1
 # Note timecode-offset to remove BST
 
 gst-launch-1.0 \
-    mpegtsmux name=mux klv-mode=sync ! queue ! rtpmp2tpay ! ristsink  address=${TARGETIP} port=5000 \
+    mpegtsmux name=mux ! queue ! rtpmp2tpay ! ristsink  address=${TARGETIP} port=5000 \
     udpsrc caps='application/x-rtp, media=(string)application, clock-rate=(int)90000, encoding-name=(string)SMPTE336M' ! queue !rtpklvdepay ! meta/x-klv, parsed=true, sync=true ! identity sync=true ! mux. \
     videotestsrc is-live=1 pattern=smpte \
     ! timecodestamper source="rtc" timecode-offset=-180000  \
